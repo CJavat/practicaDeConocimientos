@@ -14,27 +14,27 @@
     <body>
         <div class="container-fluid">
             <header class="mt-1">
-                <nav class="nav-bar bg-light d-flex align-items-center">
+                <nav class="nav-bar bg-light d-flex align-items-center align-content-center">
                     <div class="container">
                         <a class="navbar-brand" href="#">
                             <img src="./IMG/unes.png" alt="Logo" class="col-5">
                         </a>
                     </div>
-                    <ul class="nav nav-pills col-7">
+                    <ul class="lista-de-navegacion nav nav-pills col-6 justify-content-center">
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">UNES ONLINE</a>
                         </li>
                         <li>
-                            <a class="nav-link active" aria-current="page" href="#">INICIO</a>
+                            <a class="nav-link" aria-current="page" href="#">INICIO</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">NOSOTROS</a>
                             <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Separated link</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -47,13 +47,35 @@
                             <a class="nav-link" href="#">NOTICIAS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link">CONTACTO</a>
+                            <a class="nav-link" href="#">CONTACTO</a>
                         </li>
                     </ul>
                 </nav>
             </header>
-            <main class="bg-primary">
-                <!-- Aqui va todo lo demás. -->
+            <main class="main-principal bg-primary d-flex justify-content-evenly">
+                <div class="contenedor-de-textos">
+                    <h1>Solicitud de Ingreso</h1>
+                    <div class="solicitud">
+                        <h3>Inicia tu proceso de inscripción llenando la:</h3>
+                        <button><a href="#">Solicitud de Ingreso</a></button>
+                    </div>
+                    <div class="examen-de-orientacion">
+                        <h2>¿Aún no te decides?</h2>
+                        <h3>Realiza el exámen de orientación vocacional</h3>
+                        <button><a href="#">Exámen de Orientación</a></button>
+                    </div>
+                </div>
+                <div class="contenedor-login ">
+                    <h4>Solicitud Información</h4>
+                    <input type="text" placeholder="Nombre" required>
+                    <input type="text" placeholder="Email" required>
+                    <textarea name="Mensaje" id="Mensaje" cols="30" rows="10" required>Mensaje</textarea>
+                    <div>
+                        <input type="checkbox" name="No soy un robot">
+                        <label for="No soy un robot">No soy un robot</label>
+                    </div>
+                    <button type="submit">Enviar</button>
+                </div>
             </main>
         </div>
         <!-- SCRIPT -->

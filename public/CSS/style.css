@@ -2,4 +2,40 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
+}
+
+.lista-de-navegacion {
+    height: 7rem;
+}
+
+.lista-de-navegacion li {
+    display: flex;
+    align-items: center;
+}
+
+.lista-de-navegacion li a {
+    color: #000;
+    font-weight: 700;
+}
+
+.lista-de-navegacion li:first-child {
+    background-color: #e0e0e0;
+}
+
+.lista-de-navegacion li:nth-child(2) a {
+    color: #268b8a;
+}
+
+.main-principal {
+    background-image: url('../IMG/background-login.jpg');
+}
+
+.contenedor-de-textos {
+
+}
+
+.contenedor-login {
+    border: 1px solid #000;
+    border-radius: 2px;
 }
