@@ -1,17 +1,14 @@
+:root {
+    --blue: #07386e;
+    --in-active: #eceef9;
+    --btn-enviar: #01478d;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-}
-
-.lista-de-navegacion {
-    height: 7rem;
-}
-
-.lista-de-navegacion li {
-    display: flex;
-    align-items: center;
 }
 
 .lista-de-navegacion li a {
@@ -25,17 +22,36 @@
 
 .lista-de-navegacion li:nth-child(2) a {
     color: #268b8a;
-}
+} 
 
 .main-principal {
     background-image: url('../IMG/background-login.jpg');
 }
 
 .contenedor-de-textos {
-
+    color: #fff;
 }
 
-.contenedor-login {
-    border: 1px solid #000;
-    border-radius: 2px;
+.contenedor-de-textos a {
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--blue);
+}
+
+.titulo-solicitud {
+    letter-spacing: 5px;
+}
+
+#mensaje-area {
+    background-color: var(--in-active);
+    height: 100px;
+    resize: none;
+}
+
+.reCaptcha {
+    border: 1px solid #d2d2d2;
+}
+
+.btn-enviar {
+    background-color: var(--btn-enviar);
 }
