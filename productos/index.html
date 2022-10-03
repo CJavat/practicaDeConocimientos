@@ -8,11 +8,38 @@
         <link rel="shortcut icon" href="./IMG/favicon.ico" type="image/x-icon">
         <!-- CSS -->
         <link rel="stylesheet" href="./CSS/bootstrap.min.css">
+        <link rel="stylesheet" href="./CSS/style.css">
         <title>PRODUCTOS</title>
     </head>
-    <body>
-        <h1>BIENVENIDO A LOS PRODUCTOS</h1>
+    <body class="bg-black">
+        <div class="container bg-dark">
+            <h1 class="text-center bg-dark mb-3">PRODUCTOS</h1>
+            <div class="d-flex flex-wrap">
+                <!-- OPCIONES -->
+                <div class="opciones text-center col-12 col-md-12 col-lg-6">
+                    <h3 class="opciones__titulo mb-md-2 p-sm-3">Selecciona una opción</h3>
+                    <div id="opciones__botones" class="opciones__botones d-flex flex-column align-items-center">
+                        <button class="btn btn-outline-light col-sm-5 m-3" id="mostrar-productos">MOSTRAR PRODUCTOS</button>
+                        <button class="btn btn-outline-light col-sm-5 m-3" id="agregar-productos">AGREGAR PRODUCTOS</button>
+                    </div>
+                </div>
+                <!-- RESULTADOS -->
+                <div id="resultados" class="resultados text-center col-12 col-md-12 col-lg-6">
+                    <h3 class="resultados__titulo mb-md-2 p-sm-3">Resultado</h3>
+                    <div id="resultados__resultado" class="resultados__resultado col-sm-12">
+                        <form id="formulario-productos" class="d-flex flex-column esconder-formulario" action="/productos/productos-agregados" method="post">
+                            <input class="input col-sm-6 col-lg-6 m-sm-auto mb-sm-3 text-dark" type="text" name="nombre" placeholder="Nombre del producto" required>
+                            <input class="input col-sm-6 col-lg-6 m-sm-auto mb-sm-3 text-dark" type="text" name="marca" placeholder="Marca del producto" required>
+                            <input class="input col-sm-6 col-lg-6 m-sm-auto mb-sm-3 text-dark" type="number" name="existencias" placeholder="Número de existencias" required>
+                            <button class="btn btn-outline-light col-sm-2 m-sm-auto" type="submit">ENVIAR</button>
+                        </form>
+                    </div>
+                    <div id="resultado-db" class="col-sm-12"></div>
+                </div>
+            </div>
+        </div>
         <!-- SCRIPT -->
         <script src="./JS/bootstrap.bundle.min.js"></script>
+        <script src="./JS/script.js"></script>
     </body>
 </html>
