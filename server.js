@@ -1,6 +1,11 @@
-const express = require('express');
-const app = express();
 const queries = require('./data-base/queries');
+const { Server } = require('socket.io');
+const express = require('express');
+const http = require('http');
+
+const app = express();
+const httpServer = http.createServer(app);
+const io = new Server(httpServer);
 
 //* PARA AGREGAR UNA PAGINA ESTATICA.
 app.use(express.static('public'));
@@ -16,8 +21,10 @@ app.use((req, res, next) => {
 });
 
 //* MIDDLEWARE - Sirve para parsear el body del POST para poderlo obtener.
-const bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({ extended: false }))
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(express.json());
 
 app.get('/productos', (req, res) => {
     res.send('PRUEBA GET.');
@@ -44,8 +51,8 @@ const consulta = async () => {
 consulta();
 
 //! POST
-const insertQuery = async () => {
-    app.post('/productos/productos-agregados', (req, res) => {
+const insertQuery = async () => { //productos-agregados
+    app.post('/productos/todos-los-productos', async (req, res) => {
         const nombre = req.body.nombre;
         const marca = req.body.marca;
         const existencias = req.body.existencias;
@@ -54,16 +61,40 @@ const insertQuery = async () => {
         module.exports.marca = marca;
         module.exports.existencias = existencias;
     
-        queries.insert();
+        const insert = await queries.insert();
+        //console.log(insert.insertId);
+        // res.send({
+        //     id: insert.insertId,
+        //     nombre,
+        //     marca,
+        //     existencias
+        // });
         res.redirect('/productos');
+        //res.send(prueba);
     });
 }
 insertQuery();
 
+// io.on('connection', (socket) => {
+//     console.log('NUEVA CONEXIÓN.' + ' - id: ' + socket.id);
+//     socket.on('cliente:enviandoDatos', (datos) => {
+//         const nombre = datos.envNombre;
+//         const marca = datos.envMarca;
+//         const existencias = datos.envExistencias;
+//         // console.log(`Nombre: ${datos.envNombre} - Marca: ${datos.envMarca} - Existencias: ${datos.envExistencias}`);
+        
+//         module.exports.nombre = nombre;
+//         module.exports.marca = marca;
+//         module.exports.existencias = existencias;
+
+//         queries.insert();
+        
+//     });
+// });
+
+
+
 const PORT =  process.env.PORT | 5050;
-
-// app.listen();
-
-app.listen(PORT, () => {
+httpServer.listen(PORT, () => {
     console.log('Servidor escuchando en el puerto 5050...');
 });

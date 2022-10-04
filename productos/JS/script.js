@@ -1,7 +1,13 @@
+const socket = io();
+
 const mostrarResultados = document.getElementById('resultados__resultado');
 const resultadoDB = document.getElementById('resultado-db');
 
 const formularioProductos = document.getElementById('formulario-productos');
+const inputNombre = document.getElementById('input-nombre');
+const inputMarca = document.getElementById('input-marca');
+const inputExistencias = document.getElementById('input-existencias');
+const btnSubmit = document.getElementById('btn-submit');
 
 const btnMostrarProductos = document.getElementById('mostrar-productos');
 const btnAgregarProductos = document.getElementById('agregar-productos');
@@ -67,3 +73,23 @@ btnAgregarProductos.addEventListener('click', () => {
     resultadoDB.classList.remove('mostrar-formulario');
     
 });
+
+
+
+// formularioProductos.addEventListener('submit', (evt) => {
+//     evt.preventDefault();
+
+//     // console.log(inputNombre.value);
+//     // console.log(inputMarca.value);
+//     // console.log(inputExistencias.value);
+
+//     const nombreValue = inputNombre.value
+//     const marcaValue = inputMarca.value
+//     const existenciasValue = inputExistencias.value
+
+//     socket.emit('cliente:enviandoDatos', {
+//         envNombre: nombreValue,
+//         envMarca: marcaValue,
+//         envExistencias: existenciasValue
+//     });
+// });
