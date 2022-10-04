@@ -60,6 +60,10 @@ const insertQuery = async () => {
 }
 insertQuery();
 
-app.listen(5050, () => {
+const PORT =  process.env.PORT | 5050;
+
+// app.listen();
+
+app.listen(PORT, () => {
     console.log('Servidor escuchando en el puerto 5050...');
 });
