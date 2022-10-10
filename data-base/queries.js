@@ -1,11 +1,10 @@
-const connection = require('./conexion');
 const server = require('../server');
+const { dataHost } = require('./conexion');
 
 const query = async () => {
-    const [rows, fields] = await (await connection).execute('SELECT * FROM productos');
+    const [rows] = await dataHost.query('SELECT * FROM productos');
     return rows;
 }
-query();
 
 const insert = async () => {
     const insertInto = `
@@ -13,7 +12,7 @@ const insert = async () => {
         VALUES('${server.nombre}', '${server.marca}', ${server.existencias});
     `;
     try {
-        const [rows, fields] = await (await connection).query(insertInto);
+        const [rows] = await dataHost.query(insertInto);
         return rows;
     }
     catch(err) {
@@ -21,5 +20,5 @@ const insert = async () => {
     }
 }
 
-module.exports.query = query();
+module.exports.query = query;
 module.exports.insert = insert;

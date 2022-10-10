@@ -31,9 +31,9 @@ app.get('/productos', (req, res) => {
 });
 
 //! GET
-const consulta = async () => {
-    const mostrar = await queries.query;
-
+app.get('/productos/todos-los-productos', async (req, res) => {
+    const mostrar = await queries.query();
+    
     if(mostrar == 0) {
         app.get('/productos/todos-los-productos', (req, res) => {
             console.clear();
@@ -42,59 +42,31 @@ const consulta = async () => {
         });
     }
     else {
-        app.get('/productos/todos-los-productos', (req, res) => {
-            console.log(mostrar);
-            res.send(JSON.stringify(mostrar));
-        });
+        res.json(mostrar);
     }
-}
-consulta();
+});
 
 //! POST
 const insertQuery = async () => { //productos-agregados
     app.post('/productos/todos-los-productos', async (req, res) => {
-        const nombre = req.body.nombre;
-        const marca = req.body.marca;
-        const existencias = req.body.existencias;
-    
+        const { nombre, marca, existencias } = req.body;
+
         module.exports.nombre = nombre;
         module.exports.marca = marca;
         module.exports.existencias = existencias;
-    
+        
         const insert = await queries.insert();
-        //console.log(insert.insertId);
-        // res.send({
-        //     id: insert.insertId,
-        //     nombre,
-        //     marca,
-        //     existencias
-        // });
-        res.redirect('/productos');
-        //res.send(prueba);
+        res.status(200).send({
+            id: insert.insertId,
+            nombre,
+            marca,
+            existencias
+        }, res.redirect('/productos'));
     });
 }
 insertQuery();
 
-// io.on('connection', (socket) => {
-//     console.log('NUEVA CONEXIÓN.' + ' - id: ' + socket.id);
-//     socket.on('cliente:enviandoDatos', (datos) => {
-//         const nombre = datos.envNombre;
-//         const marca = datos.envMarca;
-//         const existencias = datos.envExistencias;
-//         // console.log(`Nombre: ${datos.envNombre} - Marca: ${datos.envMarca} - Existencias: ${datos.envExistencias}`);
-        
-//         module.exports.nombre = nombre;
-//         module.exports.marca = marca;
-//         module.exports.existencias = existencias;
-
-//         queries.insert();
-        
-//     });
-// });
-
-
-
-const PORT =  process.env.PORT | 5050;
+const PORT =  process.env.PORT | 5000;
 httpServer.listen(PORT, () => {
     console.log('Servidor escuchando en el puerto 5050...');
 });

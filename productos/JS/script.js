@@ -44,7 +44,7 @@ btnMostrarProductos.addEventListener('click', () => {
     const obtenerDatos = async () => {
         resultadoDB.innerHTML = '';
 
-        const datos = await fetch('http://localhost:5050/productos/todos-los-productos');
+        const datos = await fetch('http://localhost:5000/productos/todos-los-productos');
         const resultado = await datos.json();
 
         if(resultado === 'NO HAY DATOS PARA MOSTRAR.') {
@@ -73,23 +73,3 @@ btnAgregarProductos.addEventListener('click', () => {
     resultadoDB.classList.remove('mostrar-formulario');
     
 });
-
-
-
-// formularioProductos.addEventListener('submit', (evt) => {
-//     evt.preventDefault();
-
-//     // console.log(inputNombre.value);
-//     // console.log(inputMarca.value);
-//     // console.log(inputExistencias.value);
-
-//     const nombreValue = inputNombre.value
-//     const marcaValue = inputMarca.value
-//     const existenciasValue = inputExistencias.value
-
-//     socket.emit('cliente:enviandoDatos', {
-//         envNombre: nombreValue,
-//         envMarca: marcaValue,
-//         envExistencias: existenciasValue
-//     });
-// });
